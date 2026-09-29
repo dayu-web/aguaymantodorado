@@ -5,17 +5,13 @@ import { Reveal } from "./Reveal";
 
 export function Gallery() {
   const [active, setActive] = useState<number | null>(null);
+  const activeItem = active === null ? undefined : gallery[active];
 
   return (
     <>
       <ul className="grid grid-cols-2 gap-3 md:grid-cols-4">
         {gallery.map((item, i) => (
-          <Reveal
-            as="li"
-            key={item.alt}
-            delay={i * 60}
-            className={i % 5 === 0 ? "md:row-span-2" : undefined}
-          >
+          <Reveal as="li" key={item.alt} delay={i * 60} className={i % 5 === 0 ? "md:row-span-2" : ""}>
             <button
               type="button"
               onClick={() => setActive(i)}
@@ -37,16 +33,12 @@ export function Gallery() {
         ))}
       </ul>
 
-      <Dialog open={active !== null} onOpenChange={(open) => !open && setActive(null)}>
+      <Dialog open={activeItem !== undefined} onOpenChange={(open) => !open && setActive(null)}>
         <DialogContent className="max-w-4xl border-none bg-transparent p-0 shadow-none">
-          {active !== null ? (
+          {activeItem ? (
             <>
-              <DialogTitle className="sr-only">{gallery[active].alt}</DialogTitle>
-              <img
-                src={gallery[active].image}
-                alt={gallery[active].alt}
-                className="w-full rounded-lg"
-              />
+              <DialogTitle className="sr-only">{activeItem.alt}</DialogTitle>
+              <img src={activeItem.image} alt={activeItem.alt} className="w-full rounded-lg" />
             </>
           ) : null}
         </DialogContent>

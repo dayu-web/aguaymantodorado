@@ -19,6 +19,8 @@ export function HeroSlider() {
     return () => window.clearInterval(id);
   }, [paused]);
 
+  const current = heroSlides[index] ?? heroSlides[0]!;
+
   return (
     <section
       aria-label="Presentación de la empresa"
@@ -41,7 +43,6 @@ export function HeroSlider() {
             width={1920}
             height={1088}
             loading={i === 0 ? "eager" : "lazy"}
-            fetchPriority={i === 0 ? "high" : "auto"}
             className={cn("size-full object-cover", i === index && "hero-slide-image")}
           />
           <div
@@ -58,15 +59,15 @@ export function HeroSlider() {
             Aguaymanto peruano
           </p>
           <h1 className="text-balance-title text-4xl leading-[1.08] text-primary-foreground sm:text-5xl lg:text-6xl">
-            {heroSlides[index].title}
+            {current.title}
           </h1>
-          {heroSlides[index].text ? (
+          {current.text ? (
             <p className="mt-5 max-w-xl text-base leading-relaxed text-primary-foreground/90 sm:text-lg">
-              {heroSlides[index].text}
+              {current.text}
             </p>
           ) : null}
           <div className="mt-8 flex flex-wrap gap-3">
-            {heroSlides[index].actions.map((action) => (
+            {current.actions.map((action) => (
               <Button
                 key={action.label}
                 asChild
