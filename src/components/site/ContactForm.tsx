@@ -1,4 +1,4 @@
-import { useState, type FormEvent } from "react";
+import { useState, type FormEvent, type ReactNode } from "react";
 import { CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -6,7 +6,20 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { products } from "@/data/content";
 
-type Values = Record<string, string>;
+type Values = {
+  nombre: string;
+  empresa: string;
+  email: string;
+  telefono: string;
+  ciudad: string;
+  tipoCliente: string;
+  producto: string;
+  cantidad: string;
+  asunto: string;
+  mensaje: string;
+};
+
+type Errors = Partial<Record<keyof Values, string>>;
 
 const clientTypes = [
   "Cliente particular",
@@ -29,23 +42,24 @@ export function ContactForm({ defaultProduct = "" }: { defaultProduct?: string }
     asunto: "",
     mensaje: "",
   });
-  const [errors, setErrors] = useState<Values>({});
+  const [errors, setErrors] = useState<Errors>({});
   const [sent, setSent] = useState(false);
 
-  const set = (key: string) => (value: string) => {
+  const set = (key: keyof Values) => (value: string) => {
     setValues((v) => ({ ...v, [key]: value }));
     setErrors((e) => ({ ...e, [key]: "" }));
   };
 
   function validate() {
-    const next: Values = {};
+    const next: Errors = {};
     if (values.nombre.trim().length < 3) next.nombre = "Ingresa tu nombre completo.";
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(values.email))
       next.email = "Ingresa un correo electrónico válido.";
     if (values.telefono.replace(/\D/g, "").length < 6)
       next.telefono = "Ingresa un teléfono de contacto válido.";
     if (values.asunto.trim().length < 3) next.asunto = "Indica el asunto de tu consulta.";
-    if (values.mensaje.trim().length < 10) next.mensaje = "Cuéntanos un poco más (mín. 10 caracteres).";
+    if (values.mensaje.trim().length < 10)
+      next.mensaje = "Cuéntanos un poco más (mín. 10 caracteres).";
     setErrors(next);
     return Object.keys(next).length === 0;
   }
@@ -82,7 +96,7 @@ export function ContactForm({ defaultProduct = "" }: { defaultProduct?: string }
       className="rounded-xl border border-border bg-card p-6 shadow-[var(--shadow-soft)] sm:p-8"
     >
       <div className="grid gap-5 sm:grid-cols-2">
-        <Field id="nombre" label="Nombre completo" required error={errors.nombre}>
+        <Field id="nombre" label="Nombre completo" required error={errors.nombre ?? ""}>
           <Input
             id="nombre"
             value={values.nombre}
@@ -99,7 +113,7 @@ export function ContactForm({ defaultProduct = "" }: { defaultProduct?: string }
             autoComplete="organization"
           />
         </Field>
-        <Field id="email" label="Correo electrónico" required error={errors.email}>
+        <Field id="email" label="Correo electrónico" required error={errors.email ?? ""}>
           <Input
             id="email"
             type="email"
@@ -109,7 +123,7 @@ export function ContactForm({ defaultProduct = "" }: { defaultProduct?: string }
             aria-invalid={Boolean(errors.email)}
           />
         </Field>
-        <Field id="telefono" label="Teléfono" required error={errors.telefono}>
+        <Field id="telefono" label="Teléfono" required error={errors.telefono ?? ""}>
           <Input
             id="telefono"
             type="tel"
@@ -165,7 +179,13 @@ export function ContactForm({ defaultProduct = "" }: { defaultProduct?: string }
             placeholder="Ej. 50 kg por semana"
           />
         </Field>
-        <Field id="asunto" label="Asunto" required error={errors.asunto} className="sm:col-span-2">
+        <Field
+          id="asunto"
+          label="Asunto"
+          required
+          error={errors.asunto ?? ""}
+          className="sm:col-span-2"
+        >
           <Input
             id="asunto"
             value={values.asunto}
@@ -177,7 +197,7 @@ export function ContactForm({ defaultProduct = "" }: { defaultProduct?: string }
           id="mensaje"
           label="Mensaje"
           required
-          error={errors.mensaje}
+          error={errors.mensaje ?? ""}
           className="sm:col-span-2"
         >
           <Textarea
@@ -200,9 +220,9 @@ export function ContactForm({ defaultProduct = "" }: { defaultProduct?: string }
 function Field({
   id,
   label,
-  required,
-  error,
-  className,
+  required = false,
+  error = "",
+  className = "",
   children,
 }: {
   id: string;
@@ -210,7 +230,7 @@ function Field({
   required?: boolean;
   error?: string;
   className?: string;
-  children: React.ReactNode;
+  children: ReactNode;
 }) {
   return (
     <div className={className}>
