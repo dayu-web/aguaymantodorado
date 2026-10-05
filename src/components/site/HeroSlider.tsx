@@ -22,7 +22,7 @@ export function HeroSlider() {
     if (paused || videoOpen) return;
     const id = window.setInterval(() => setIndex((i) => (i + 1) % heroSlides.length), 5000);
     return () => window.clearInterval(id);
-  }, [paused]);
+  }, [paused, videoOpen]);
 
   const current = heroSlides[index] ?? heroSlides[0]!;
 
