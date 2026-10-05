@@ -12,13 +12,14 @@ const PROMO_VIDEO_TITLE = "Video sobre el aguaymanto peruano";
 export function HeroSlider() {
   const [index, setIndex] = useState(0);
   const [paused, setPaused] = useState(false);
+  const [videoOpen, setVideoOpen] = useState(false);
 
   const go = useCallback((next: number) => {
     setIndex((next + heroSlides.length) % heroSlides.length);
   }, []);
 
   useEffect(() => {
-    if (paused) return;
+    if (paused || videoOpen) return;
     const id = window.setInterval(() => setIndex((i) => (i + 1) % heroSlides.length), 5000);
     return () => window.clearInterval(id);
   }, [paused]);
