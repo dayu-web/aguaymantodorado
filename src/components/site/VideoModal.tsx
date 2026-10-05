@@ -44,16 +44,17 @@ export function VideoModal({ open, youtubeId, title, onClose }: VideoModalProps)
         className="relative w-full max-w-5xl"
         onClick={(event) => event.stopPropagation()}
       >
-        <Button
-          ref={closeButtonRef}
-          variant="outlineLight"
-          size="icon"
-          aria-label="Cerrar video"
-          className="absolute -top-2 right-0 z-10 -translate-y-full"
-          onClick={onClose}
-        >
-          <X />
-        </Button>
+        <div className="mb-3 flex justify-end">
+          <Button
+            ref={closeButtonRef}
+            variant="default"
+            size="icon"
+            aria-label="Cerrar video"
+            onClick={onClose}
+          >
+            <X />
+          </Button>
+        </div>
         <div className="aspect-video w-full overflow-hidden rounded-xl bg-black shadow-[var(--shadow-card)]">
           <iframe
             key={youtubeId}
