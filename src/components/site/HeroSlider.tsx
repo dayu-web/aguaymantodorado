@@ -1,23 +1,28 @@
 import { Link } from "@tanstack/react-router";
 import { useCallback, useEffect, useState } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, Play } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { VideoModal } from "@/components/site/VideoModal";
 import { cn } from "@/lib/utils";
 import { heroSlides } from "@/data/content";
+
+const PROMO_VIDEO_ID = "aG-EexHoO10";
+const PROMO_VIDEO_TITLE = "Video sobre el aguaymanto peruano";
 
 export function HeroSlider() {
   const [index, setIndex] = useState(0);
   const [paused, setPaused] = useState(false);
+  const [videoOpen, setVideoOpen] = useState(false);
 
   const go = useCallback((next: number) => {
     setIndex((next + heroSlides.length) % heroSlides.length);
   }, []);
 
   useEffect(() => {
-    if (paused) return;
+    if (paused || videoOpen) return;
     const id = window.setInterval(() => setIndex((i) => (i + 1) % heroSlides.length), 5000);
     return () => window.clearInterval(id);
-  }, [paused]);
+  }, [paused, videoOpen]);
 
   const current = heroSlides[index] ?? heroSlides[0]!;
 
@@ -77,9 +82,25 @@ export function HeroSlider() {
                 <Link to={action.to as "/"}>{action.label}</Link>
               </Button>
             ))}
+            <Button
+              size="xl"
+              variant="outlineLight"
+              aria-label="Ver video sobre el aguaymanto"
+              onClick={() => setVideoOpen(true)}
+            >
+              <Play />
+              Ver video
+            </Button>
           </div>
         </div>
       </div>
+
+      <VideoModal
+        open={videoOpen}
+        youtubeId={PROMO_VIDEO_ID}
+        title={PROMO_VIDEO_TITLE}
+        onClose={() => setVideoOpen(false)}
+      />
 
       <div className="container-site absolute inset-x-0 bottom-7 flex items-center justify-between">
         <div className="flex gap-2" role="tablist" aria-label="Indicadores del slider">
