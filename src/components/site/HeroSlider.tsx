@@ -82,9 +82,25 @@ export function HeroSlider() {
                 <Link to={action.to as "/"}>{action.label}</Link>
               </Button>
             ))}
+            <Button
+              size="xl"
+              variant="outlineLight"
+              aria-label="Ver video sobre el aguaymanto"
+              onClick={() => setVideoOpen(true)}
+            >
+              <Play />
+              Ver video
+            </Button>
           </div>
         </div>
       </div>
+
+      <VideoModal
+        open={videoOpen}
+        youtubeId={PROMO_VIDEO_ID}
+        title={PROMO_VIDEO_TITLE}
+        onClose={() => setVideoOpen(false)}
+      />
 
       <div className="container-site absolute inset-x-0 bottom-7 flex items-center justify-between">
         <div className="flex gap-2" role="tablist" aria-label="Indicadores del slider">
