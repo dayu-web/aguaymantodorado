@@ -35,7 +35,7 @@ export function ProductCard({ product, delay = 0 }: { product: Product; delay?: 
             ))}
           </dl>
           <Button asChild variant="cta" className="mt-6 w-full">
-            <Link to="/contacto" search={{ producto: product.slug }}>
+            <Link to="/contacto">
               {product.cta}
             </Link>
           </Button>

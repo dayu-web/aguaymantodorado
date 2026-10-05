@@ -9,9 +9,6 @@ import { images } from "@/data/content";
 import { siteConfig, whatsappLink } from "@/config/site";
 
 export const Route = createFileRoute("/contacto")({
-  validateSearch: (search: Record<string, unknown>) => ({
-    producto: typeof search.producto === "string" ? search.producto : undefined,
-  }),
   head: () => ({
     meta: [
       { title: "Contacto | Solicita tu cotización de aguaymanto" },
@@ -31,7 +28,6 @@ export const Route = createFileRoute("/contacto")({
 });
 
 function Contacto() {
-  const { producto } = Route.useSearch();
   const data = [
     { Icon: MessageCircle, label: "WhatsApp", value: siteConfig.contact.whatsapp, href: whatsappLink },
     { Icon: Phone, label: "Teléfono", value: siteConfig.contact.phone },
@@ -92,7 +88,7 @@ function Contacto() {
               Completa el formulario y te responderemos a la brevedad.
             </p>
             <div className="mt-6">
-              <ContactForm defaultProduct={producto ?? ""} />
+              <ContactForm />
             </div>
           </Reveal>
         </div>
