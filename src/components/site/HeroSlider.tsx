@@ -1,9 +1,13 @@
 import { Link } from "@tanstack/react-router";
 import { useCallback, useEffect, useState } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, Play } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { VideoModal } from "@/components/site/VideoModal";
 import { cn } from "@/lib/utils";
 import { heroSlides } from "@/data/content";
+
+const PROMO_VIDEO_ID = "aG-EexHoO10";
+const PROMO_VIDEO_TITLE = "Video sobre el aguaymanto peruano";
 
 export function HeroSlider() {
   const [index, setIndex] = useState(0);
