@@ -84,8 +84,8 @@ function Index() {
       <section className="bg-muted/60 py-20 sm:py-24">
         <div className="container-site">
           <SectionTitle
-            eyebrow="Nuestros productos"
-            title="Aguaymanto seleccionado para cada tipo de cliente"
+            eyebrow="Nuestros productos bandera"
+            title="Aguaymanto para cada necesidad de los peruanos"
             text="Trabajamos presentaciones para consumo directo y para clientes comerciales."
             align="center"
           />
