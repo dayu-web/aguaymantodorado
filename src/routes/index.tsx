@@ -35,7 +35,7 @@ function Index() {
     <>
       <HeroSlider />
 
-      {/* Sobre nosotros */}
+      {/* Sobre nosotros*/}
       <section className="py-20 sm:py-24">
         <div className="container-site grid gap-12 lg:grid-cols-2 lg:items-center">
           <Reveal>
@@ -52,8 +52,8 @@ function Index() {
           </Reveal>
           <div>
             <SectionTitle
-              eyebrow="Sobre nosotros"
-              title="Comprometidos con la calidad del aguaymanto peruano"
+              eyebrow="Sobre la empresa"
+              title="Comprometidos con la calidad del aguaymanto Limatambeño"
               text="Somos una empresa dedicada a la producción y comercialización de aguaymanto, comprometida con ofrecer productos de calidad y construir relaciones comerciales duraderas con nuestros clientes."
             />
             <Reveal delay={120}>
