@@ -19,7 +19,7 @@ export const Route = createFileRoute("/")({
         content:
           "Empresa peruana dedicada a la producción y comercialización de aguaymanto fresco. Venta al por mayor para restaurantes, tiendas y distribuidores. Solicita tu cotización.",
       },
-      { property: "og:title", content: "Aguaymanto Perú | Aguaymanto fresco de calidad" },
+      { property: "og:title", content: "Aguaymanto Perú | Aguaymanto fresco de calidad - Limatambo" },
       {
         property: "og:description",
         content:
