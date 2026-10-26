@@ -3,7 +3,7 @@
  * Edita aquí los datos de la empresa: todos los componentes los leen desde acá.
  */
 export const siteConfig = {
-  companyName: "[NOMBRE DE LA EMPRESA]",
+  companyName: "AGUAYMANTO DORADO ✨",
   brandName: "AGUAYMANTO PERÚ",
   tagline: "Calidad y compromiso desde el campo peruano.",
   contact: {
