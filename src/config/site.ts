@@ -5,7 +5,7 @@
 export const siteConfig = {
   companyName: "AGUAYMANTO DORADO ✨",
   brandName: "AGUAYMANTO PERÚ",
-  tagline: "Calidad y compromiso desde el campo peruano.",
+  tagline: "Frutitas doradas del campo peruano, cultivadas con mucho amor.",
   contact: {
     whatsapp: "+51 957 714 811",
     // Número en formato internacional, solo dígitos (ej. 51999999999)
