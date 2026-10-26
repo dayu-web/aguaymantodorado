@@ -7,16 +7,16 @@ export const siteConfig = {
   brandName: "AGUAYMANTO PERÚ",
   tagline: "Calidad y compromiso desde el campo peruano.",
   contact: {
-    whatsapp: "[WHATSAPP]",
+    whatsapp: "+51 957 714 811",
     // Número en formato internacional, solo dígitos (ej. 51999999999)
-    whatsappNumber: "51999999999",
+    whatsappNumber: "51957714811",
     whatsappMessage:
       "Hola, estoy interesado en sus productos de aguaymanto y quisiera recibir información.",
-    phone: "[TELÉFONO]",
-    email: "[CORREO]",
-    address: "[DIRECCIÓN]",
-    city: "[CIUDAD]",
-    schedule: "[HORARIO]",
+    phone: "+51 957 714 811",
+    email: "contacto@aguaymantodorado.com",
+    address: "Comunidad Sauceda S/N Limatambo",
+    city: "Anta - Cusco",
+    schedule: "Lunes a sábado: 8:00 a.m. - 6:00 p.m.",
   },
   social: {
     facebook: "#",
