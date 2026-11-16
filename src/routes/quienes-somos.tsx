@@ -44,7 +44,7 @@ function QuienesSomos() {
           <div>
             <SectionTitle
               eyebrow="sobre nuestra empresa"
-              title="Trabajamos el aguaymanto con cuidado en cada etapa"
+              title="Cuidamos el aguaymanto, cuidamos nuestra historia"
               text="Nos dedicamos a la producción y comercialización de aguaymanto, atendiendo tanto a clientes particulares como a restaurantes, tiendas, distribuidores y empresas que requieren un proveedor confiable."
             />
             <Reveal delay={100}>
