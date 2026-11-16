@@ -43,7 +43,7 @@ function QuienesSomos() {
         <div className="container-site grid gap-12 lg:grid-cols-2 lg:items-center">
           <div>
             <SectionTitle
-              eyebrow="Nuestra empresa"
+              eyebrow="sobre nuestra empresa"
               title="Trabajamos el aguaymanto con cuidado en cada etapa"
               text="Nos dedicamos a la producción y comercialización de aguaymanto, atendiendo tanto a clientes particulares como a restaurantes, tiendas, distribuidores y empresas que requieren un proveedor confiable."
             />
